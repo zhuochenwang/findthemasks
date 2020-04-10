@@ -14,6 +14,7 @@ export default {
     i18nString: 'ftm-canada',
     countryCode: 'ca',
     administrativeRegionI18nString: 'ftm-administrative-region-province',
+    whatToDoHeader: 'ftm-what-to-do-header-canada',
     donationSites: {
       i18nString: 'ftm-canada-large-donations',
       administrativeRegionLinks: [

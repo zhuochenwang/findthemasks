@@ -6,6 +6,10 @@ import { FILTER_ITEMS, ENUM_MAPPINGS } from './formEnumLookups.js';
 import { getMapsLanguageRegion, getCurrentLocaleParam, DEFAULT_LOCALE } from  './i18nUtils.js';
 
 
+
+
+
+
 /******************************************
  * MODULE VARS AVAILABLE TO ALL FUNCTIONS *
  ******************************************/
@@ -392,6 +396,11 @@ $(function () {
   $('html').on('i18n:ready', function () {
     generateBottomNav();
     addDonationSites();
+    const header = document.getElementById('what-to-do-header');
+
+    const config = countries[currentCountry];
+    header.innerText = $.i18n(config.whatToDoHeader || 'ftm-what-to-do-header');
+
 
     $('.add-donation-site-form')
       .attr({href: `/${ currentCountry }/donation-form?locale=${$.i18n().locale}`})
