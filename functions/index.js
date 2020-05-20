@@ -503,10 +503,10 @@ module.exports.reloadsheetdata = functions.https.onRequest(async (req, res) => {
     [data] = await snapshotData('getusppe-affiliates', 'us');
   } else  {
     if (!(country in SHEETS)) {
-      res.status(400).send(`invalid country: ${country} for ${req.path}`);
+      res.status(404).send(`invalid country: ${country} for ${req.path}`);
       return;
     }
-    [data] = await snapshotData(data, country);
+    [data] = await snapshotData('data', country);
   }
 
   res.status(200).send(`<pre>${JSON.stringify(data, null, 2)}</pre>`);
@@ -539,7 +539,7 @@ module.exports.geocode = functions.https.onRequest(async (req, res) => {
   } else if (country in SHEETS) {
     spreadsheetId = SHEETS[country];
   } else {
-    res.status(400).send(`invalid country: ${country} for ${req.path}`);
+    res.status(404).send(`invalid country: ${country} for ${req.path}`);
     return;
   }
 
